@@ -1,0 +1,37 @@
+<ion-view view-title="Attendance">
+    <ion-header-bar class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input id="searchKey" type="search" placeholder="Search" ng-model="filter" autocorrect="off">
+            <button class="button button-clear" ng-click="clearSearch()">X</button>
+        </label>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
+
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click="record(student)" type="item-text-wrap" ng-repeat="student in students | filter:filter" 1>
+                <!--href="#/tab/student/{{student._id}}"-->
+                <img src="http://ourcitysd.com/downloads/540/download/male-silhouette.jpg?cb=27efd633e712af37ea073f6742c64dd2">
+                <h2>{{student.name}}</h2>
+                <p>{{student.account}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <ion-option-button class="button-assertive" ng-click="delete(student)">Delete</ion-option-button>
+                <ion-option-button class="button-positive" ng-click="edit(student)">Edit</ion-option-button>
+                
+            </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+                <img ng-src="{{chat.face}}">
+                <h2>{{chat.name}}</h2>
+                <p>{{chat.lastText}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

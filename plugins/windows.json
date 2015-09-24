@@ -1,0 +1,47 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<preference name=\"AndroidPersistentFileLocation\" value=\"Internal\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "com.ionic.keyboard": {
+            "PACKAGE_NAME": "Attendance"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "Attendance"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "Attendance"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "Attendance"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "Attendance"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "Attendance"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "Attendance"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "Attendance"
+        }
+    },
+    "dependent_plugins": {}
+}

@@ -1,0 +1,77 @@
+﻿<ion-view view-title="Attendance">
+
+    <ion-content>
+        <div class="row">
+            <div class="col">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Club
+                    </div>
+                    <select ng-model="selectedClub" ng-change="selectClub(selectedClub)">
+                        <option ng-selected="{{selectedClub == club._id}}" ng-repeat="club in clubs" value={{club._id}}>{{club.name}}</option>
+                    </select>
+                </label>
+            </div>
+            <div class="col">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Partial
+                    </div>
+                    <select ng-model="selectedPartial" ng-change="selectPartial(selectedPartial)">
+                        <option ng-selected="{{partial == selectedPartial}}" ng-repeat="partial in partials" value={{partial}}>{{partial}}</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="row row-center" ng-if="lmessage">
+            <div class="col">
+                <p class="button button-full button-light disabled">{{lmessage}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <ion-scroll zooming="false" direction="y" style="height: 500px;width:100%">
+                <ion-refresher pulling-text="Refresh students list" on-refresh="refreshStudentsList()">
+                </ion-refresher>
+                <ion-list class="col">
+
+
+                    <ion-item class="item-remove-animate item-avatar item-icon-right" ng-click="record(student)" type="item-text-wrap" ng-repeat="student in students | filter:filter">
+                        <!--href="#/tab/student/{{student._id}}"-->
+                        <img src="http://ourcitysd.com/downloads/540/download/male-silhouette.jpg?cb=27efd633e712af37ea073f6742c64dd2">
+                        <h2>{{student.name}}</h2>
+                        <p>{{student.account}}</p>
+                        <!--                        <i class="icon ion-chevron-right icon-accessory"></i>-->
+                        <span class="badge badge-assertive">{{getAttendancesByStudent(student) | number:0}}</span>
+                        <ion-option-button class="button-assertive" ng-click="delete(student)">Delete</ion-option-button>
+                        <ion-option-button class="button-positive" ng-click="edit(student)">Edit</ion-option-button>
+
+                    </ion-item>
+                </ion-list>
+            </ion-scroll>
+        </div>
+
+        <!--
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+                <img ng-src="{{chat.face}}">
+                <h2>{{chat.name}}</h2>
+                <p>{{chat.lastText}}</p>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+-->
+    </ion-content>
+
+    <ion-footer-bar align-title="left" class="bar bar-footer item-input-inset">
+        <div class="row">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios7-search placeholder-icon"></i>
+                <input type="search" placeholder="Search" ng-model="filter">
+            </label>
+        </div>
+    </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,10 @@
+{
+    "jscodehints.detectedExclusions": [
+        "D:/Yknx4/Documents/nodejs/AsistenciasApp/plugins/cordova-plugin-console/www/logger.js",
+        "D:/Yknx4/Documents/nodejs/AsistenciasApp/www/dash/dash.controller.js",
+        "D:/Yknx4/Documents/nodejs/AsistenciasApp/plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
+        "D:/Yknx4/Documents/nodejs/AsistenciasApp/www/lib/ionic/js/ionic.min.js",
+        "D:/Yknx4/Documents/nodejs/AsistenciasApp/platforms/android/assets/www/plugins/cordova-plugin-console/www/logger.js",
+        "D:/Yknx4/Documents/nodejs/AsistenciasApp/platforms/android/assets/www/plugins/cordova-plugin-device/www/device.js"
+    ]
+}

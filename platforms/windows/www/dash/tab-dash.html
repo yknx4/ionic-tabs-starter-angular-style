@@ -1,0 +1,64 @@
+﻿<ion-view view-title="Registration">
+    <ion-content class="padding">
+        <div class="list card">
+            <div class="item item-divider">New Student</div>
+            <div class="item item-body">
+                <div class="col">
+                    <form name="userForm" class="list" ng-init="setFormScope(this)">
+                        <label class="item item-input item-floating-label">
+                            <span class="input-label">Name</span>
+                            <input required type="text" placeholder="Name" ng-model="student.name">
+                        </label>
+                        <label class="item item-input item-floating-label">
+                            <span class="input-label">School</span>
+                            <input required type="text" placeholder="School" ng-model="student.school">
+                        </label>
+                        <label class="item item-input item-floating-label">
+                            <span class="input-label">Account {{userForm.$pending.usernameExists ? 'checking' : ''}} {{userForm.$error.usernameExists ? 'already exists' : ''}}</span>
+<!--                            username-available-->
+                            <input name="account" username-available required ng-model-options="{ updateOn: 'default', debounce: {'default': 1000, 'blur': 0} }" type="text" placeholder="Account" ng-model="student.account">
+                        </label>
+                        <label class="item item-input item-floating-label">
+                            <span class="input-label">Email</span>
+                            <input required type="email" placeholder="Email" ng-model="student.email">
+                        </label>
+                        <button ng-disabled="userForm.$invalid" class="button button-block button-positive" ng-click="addStudent()">
+                            Add
+                        </button>
+                        <label class="item item-input">
+                            <span class="input-label">{{lmessage}}</span>
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="list card">
+            <div class="item item-divider">{{club.name}}</div>
+            <div class="item item-body">
+                <div class="row list">
+                    <label class="item item-input col">
+                        <span class="input-label">Search</span>
+                        <input type="search" placeholder="Search"  ng-model="filter">
+                    </label>
+                </div>
+                <div class="row">
+                    <ion-scroll zooming="false" direction="y" style="height: 500px;width:100%">
+                        <ion-refresher pulling-text="Refresh {{club.name}} list" on-refresh="refreshClubList()">
+                        </ion-refresher>
+                        <ion-list class="col">
+                            <div ng-repeat="group in groups | filter:filter">
+                                <ion-item ng-class="group.attendances.length >= club.needed_attendances ? 'item-light' : 'item-stable'" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+                                    <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i> &nbsp; {{group.name}} <span class="badge" ng-class="group.attendances.length >= club.needed_attendances ? 'badge-positive' : 'badge-assertive'">{{group.attendances.length}}</span>
+                                </ion-item>
+                                <ion-item class="item-accordion" ng-repeat="item in group.attendances" ng-show="isGroupShown(group)">
+                                    {{item.date | date:'medium'}} - {{getUserName(item.user_id)}}
+                                </ion-item>
+                            </div>
+                        </ion-list>
+                    </ion-scroll>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

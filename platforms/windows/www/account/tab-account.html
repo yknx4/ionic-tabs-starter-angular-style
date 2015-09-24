@@ -1,0 +1,13 @@
+﻿<ion-view view-title="Account">
+    <ion-content>
+        <ion-list>
+            <ion-toggle ng-model="settings.enableFriends">
+                Enable Friends
+            </ion-toggle>
+            <ion-item>{{user.name}}</ion-item>
+            <ion-item ng-click="openOutside(listLink)">Download list (Excel)</ion-item>
+            <!--            <ion-item target="_system" ng-href="{{listLink}}">Download list (Excel)</ion-item>-->
+<!--            <ion-item>{{listLink}}</ion-item>-->
+        </ion-list>
+    </ion-content>
+</ion-view>
